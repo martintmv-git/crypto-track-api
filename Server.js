@@ -9,13 +9,68 @@ const app = express()
 
 const sources = [
     {
-        name: 'forbes',
+        name: 'Forbes',
         address: 'https://www.forbes.com/markets/?sh=38b457ef1fbf',
         base: ''
     },
     {
-        name: 'yahoo',
-        address: 'https://www.shorturl.at/swEIV',
+        name: 'Yahoo Finance',
+        address: 'https://finance.yahoo.com/topic/crypto',
+        base: 'https://finance.yahoo.com'
+    },
+    {
+        name: 'WSJ',
+        address: 'https://www.wsj.com/news/markets/stocks',
+        base: ''
+    },
+    {
+        name: 'News Now',
+        address: 'https://www.newsnow.com/us/Business/Cryptocurrencies?type=ln',
+        base: ''
+    },
+    {
+        name: 'Cointelegraph',
+        address: 'https://cointelegraph.com/tags/markets',
+        base: 'https://cointelegraph.com'
+    },
+    {
+        name: 'Cryptopotato',
+        address: 'https://cryptopotato.com/category/crypto-news/page/5/',
+        base: ''
+    },
+    {
+        name: 'Bitcoin magazine Articles',
+        address: 'https://bitcoinmagazine.com/articles',
+        base: 'https://bitcoinmagazine.com'
+    },
+    {
+        name: 'Bitcoin magazine Markets',
+        address: 'https://bitcoinmagazine.com/markets',
+        base: 'https://bitcoinmagazine.com'
+    },
+    {
+        name: 'CoinPedia',
+        address: 'https://coinpedia.org/recent-posts/',
+        base: ''
+    },
+    {
+        name: 'FXEmpire',
+        address: 'https://www.fxempire.com/forecasts/cryptocurrencies',
+        base: ''
+    },
+    {
+        name: 'ZyCrypto',
+        address: 'https://zycrypto.com/category/exchanges/',
+        base: ''
+    },
+    {
+        name: 'CryptoTicker',
+        address: 'https://cryptoticker.io/en/crypto-news/exchanges/',
+        base: ''
+    },
+    {
+        name: 'Daily HODL',
+        address: 'https://dailyhodl.com/news/',
         base: ''
     },
 
@@ -23,7 +78,7 @@ const sources = [
 
 const prices = [
     {
-        name: 'coindesk',
+        name: 'Coindesk',
         address: 'https://www.coindesk.com',
         base: 'https://www.coindesk.com'
     },
@@ -38,7 +93,177 @@ sources.forEach(source => {
             const html = response.data
             const $ = cheerio.load(html)
 
-            $('a:contains("Economy")', html).each(function () {
+            $('a:contains("crypto")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("news")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("market")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("transactions")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("price")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("prediction")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("highlight")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("blockchain")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("mining")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("staking")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("smart contract")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("Decentralised")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("wallet")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("token")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("gas")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("p2p")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("validator")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+
+                articles.push({
+                    title,
+                    url: source.base + url,
+                    source: source.name
+                })
+            })
+            $('a:contains("hash")', html).each(function () {
                 const title = $(this).text()
                 const url = $(this).attr('href')
 
@@ -58,16 +283,6 @@ sources.forEach(source => {
                     source: source.name
                 })
             })
-            $('a:contains("FTX")', html).each(function () {
-                const title = $(this).text()
-                const url = $(this).attr('href')
-
-                articles.push({
-                    title,
-                    url: source.base + url,
-                    source: source.name
-                })
-            })
             $('a:contains("Coinbase")', html).each(function () {
                 const title = $(this).text()
                 const url = $(this).attr('href')
@@ -78,7 +293,7 @@ sources.forEach(source => {
                     source: source.name
                 })
             })
-
+            
         })
 })
 
@@ -90,11 +305,11 @@ prices.forEach(source => {
             const $ = cheerio.load(html)
 
             $('a:contains("$")', html).each(function () {
-                const title = $(this).text()
+                const current_price = $(this).text()
                 const url = $(this).attr('href')
 
                 price.push({
-                    title,
+                    current_price,
                     url: source.base + url,
                     source: source.name
                 })
